@@ -1,0 +1,272 @@
+/***********************************************************************************
+ Header start
+***********************************************************************************/
+
+@media (max-width: 991px) {
+   
+}
+
+
+
+/***********************************************************************************
+ Banner start
+***********************************************************************************/
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .banner_content {
+        padding: 130px 0;
+    }
+
+}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {
+
+    
+}
+
+
+/***********************************************************************************
+ About start
+***********************************************************************************/
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+@media (max-width: 991px) {
+
+
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+/*
+    .about_img > img {
+        margin-top: 60px;
+    }
+*/
+}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {}
+
+
+
+/***********************************************************************************
+ Team start
+***********************************************************************************/
+@media (max-width: 1600px) {
+  
+}
+
+@media (max-width: 1440px) {
+   
+}
+
+@media (max-width: 1024px) {
+   
+}
+
+@media (max-width: 425px) {
+    
+}
+
+
+/***********************************************************************************
+      Counter start
+    ***********************************************************************************/
+
+
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (max-width:1025px) {
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {}
+
+/***********************************************************************************
+      Service start
+    ***********************************************************************************/
+
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {
+   
+}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {
+    
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+
+/***********************************************************************************
+      News start
+    ***********************************************************************************/
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (max-width:992px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {}
+
+
+
+/***********************************************************************************
+      CTA start
+    ***********************************************************************************/
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {
+
+
+
+}
+
+
+/***********************************************************************************
+      Clients start
+    ***********************************************************************************/
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {}
+
+
+/***********************************************************************************
+      Footer start
+***********************************************************************************/
+
+/* Normal desktop :1200px */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+/* Normal desktop :992px */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+/* Tablet desktop :768px */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* Large Mobile :480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* small mobile :320px */
+
+@media (max-width: 767px) {
+ 
+}
