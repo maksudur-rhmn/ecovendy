@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Mail;
 use App\Models\Blog;
+use App\Models\User;
 use App\Models\Banner;
 use App\Mail\VisitorQueries;
 use Illuminate\Http\Request;
@@ -53,8 +54,9 @@ class FrontendController extends Controller
      $company = $request->company;
      $phone = $request->phone;
      $message = $request->message;
+     $admin = User::findOrFail(1)->email;
 
-     Mail::to('spu.rahman@gmail.com')->send(new VisitorQueries($name, $email, $phone, $message, $company));
+     Mail::to($admin)->send(new VisitorQueries($name, $email, $phone, $message, $company));
 
      return back()->withSuccess('Message received successfully.We will get back to you as soon as possible');
     }
