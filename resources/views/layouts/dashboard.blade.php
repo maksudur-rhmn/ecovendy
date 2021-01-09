@@ -41,19 +41,19 @@
                         <a href="{{ url('/') }}" class="logo logo-dark">
                             <span class="logo-sm">
 
-                                {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="22"> --}}
+                                <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="20"> --}}
+                                <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="20">
                             </span>
                         </a>
 
                         <a href="{{ url('/') }}" class="logo logo-light">
                             <span class="logo-sm">
-                                {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="22"> --}}
+                                <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="20"> --}}
+                                <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="20">
                             </span>
                         </a>
                     </div>
@@ -108,19 +108,19 @@
             <div class="navbar-brand-box">
                 <a href="{{ url('/') }}" class="logo logo-dark">
                     <span class="logo-sm">
-                        {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="22"> --}}
+                        <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="20"> --}}
+                        <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="20">
                     </span>
                 </a>
 
                 <a href="{{ url('/') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="22"> --}}
+                        <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        {{-- <img src="{{ asset('uploads/logo') }}/{{ footer()->logo }}" alt="" height="20"> --}}
+                        <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="" height="20">
                     </span>
                 </a>
             </div>
@@ -157,7 +157,85 @@
                               <span>Banner Settings</span>
                           </a>
                       </li>
-                      <li>
+
+                      <li class="@yield('whoweare_menu_active')">
+                          <a href="{{ route('whoweare.index') }}">
+                              <i class="uil-home-alt"></i>
+                              <span>Who we are Settings</span>
+                          </a>
+                      </li>
+
+                      <li class="@yield('whowearebottom_menu_active')">
+                          <a href="{{ route('whowearebottom.index') }}">
+                              <i class="uil-home-alt"></i>
+                              <span>Who we are Bottom</span>
+                          </a>
+                      </li>
+
+                      <li class="@yield('whatwedo_menu_active')">
+                          <a href="{{ route('whatwedo.index') }}">
+                              <i class="uil-home-alt"></i>
+                              <span>What we do</span>
+                          </a>
+                      </li>
+
+                      <li class="@yield('interesting_menu_active')">
+                          <a href="{{ route('interesting.index') }}">
+                              <i class="uil-home-alt"></i>
+                              <span>Interesting Facts</span>
+                          </a>
+                      </li>
+                      <li class="@yield('howdoesitwork_menu_active')">
+                        <a href="{{ route('howdoesitwork.index') }}">
+                            <i class="uil-home-alt"></i>
+                            <span>How it works Settings</span>
+                        </a>
+                    </li>
+
+                      <li class="@yield('video_menu_active')">
+                        <a href="{{ route('video.index') }}">
+                            <i class="uil-home-alt"></i>
+                            <span>Video Settings</span>
+                        </a>
+                    </li>
+                    <li class="@yield('faqs_menu_active')">
+                        <a href="{{ route('faqs.index') }}">
+                            <i class="uil-home-alt"></i>
+                            <span>Faq</span>
+                        </a>
+                    </li>
+
+                      <li class="@yield('whatcanyoudo_menu_active')">
+                        <a href="{{ route('whatcanyoudo.index') }}">
+                            <i class="uil-home-alt"></i>
+                            <span>What can you do Settings</span>
+                        </a>
+                    </li>
+
+                      <li class="@yield('partner_menu_active')">
+                        <a href="{{ route('partner.index') }}">
+                            <i class="uil-home-alt"></i>
+                            <span>Partner Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="uil-500px"></i>
+                            <span>Blogs</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{ route('blog.index') }}">Blog list</a></li>
+                            <li><a href="{{ route('blog.create') }}">Add Blogs</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="@yield('settings_menu_active')">
+                        <a href="{{ route('settings.index') }}">
+                            <i class="uil-home-alt"></i>
+                            <span>General Settings</span>
+                        </a>
+                    </li>
                     </ul>
                 </div>
                 <!-- Sidebar -->

@@ -16,18 +16,18 @@
 
     <section id="banner_section">
         <div class="">
-            <div class="banner_img" style="background:url({{ asset('uploads/banners') }}/{{ $banner->banner_img }})">
+            <div class="banner_img" style="background:url({{ asset('uploads/banners') }}/{{ banner()->banner_img }})">
                 <div class="container">
                     <div class="banner_content text-left">
-                        <h1>{{ $banner->first_word }}<span> {{ $banner->span_one }} <span class="color_green">{{ $banner->span_green }}</span>{{ $banner->span_two }}</span></h1>
-                        <h3>{{ $banner->sub_header }}</h3>
-                        <p>{{ $banner->description }}</p>
+                        <h1>{{ banner()->first_word }}<span> {{ banner()->span_one }} <span class="color_green">{{ banner()->span_green }}</span>{{ banner()->span_two }}</span></h1>
+                        <h3>{{ banner()->sub_header }}</h3>
+                        <p>{{ banner()->description }}</p>
                         <div class="banner_button">
                             <button class="btn wow fadeInUp animated animated animated">
-                                <a class="text-white" href="{{ route('frontend.whoweare') }}">{{ $banner->btn_one }}</a>
+                                <a class="text-white" href="{{ route('frontend.whoweare') }}">{{ banner()->btn_one }}</a>
                             </button>
                             <button class="btn active wow fadeInUp animated animated animated" data-wow-delay=".4s">
-                                <a class="color_green" href="{{ route('frontend.contact') }}">{{ $banner->btn_two }}</a>
+                                <a class="color_green" href="{{ route('frontend.contact') }}">{{ banner()->btn_two }}</a>
                             </button>
                         </div>
                     </div>
@@ -44,59 +44,59 @@
     <section id="about_section">
         <div class="container p-md-0">
             <div class="section_title text-center">
-                <h2>who we are</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque suscipit repellendus explicabo.</p>
+                <h2>{{ whoweare()->header }}</h2>
+                <p>{{ whoweare()->sub_header }}</p>
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-6 wow fadeInLeft animated animated animated" data-wow-delay=".2s">
                     <div class="about_img text-center mt-50">
-                        <img src="images/about/about.jpg" class="img-fluid w-100" alt="not-found">
+                        <img src="{{ asset('uploads/whoweare') }}/{{ whoweare()->image }}" class="img-fluid w-100" alt="not-found">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInRight animated animated animated" data-wow-delay=".5s">
                     <div class="about_text text-left mt-50">
                         <div class="section_title">
-                            <h2>Together we can make a difference</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis ab animi. Fuga dolorem quaerat omnis sunt quae optio quam ad, ipsa, dolores debitis, maxime aliquid consequatur facere quibusdam ullam repellendus dolor atque alias.</p>
+                            <h2>{{ whoweare()->title }}</h2>
+                            <p>{{ whoweare()->description_one }}</p>
                             <p>
-                                Eos provident dolorum ducimus, quam ab, ipsa nobis officia facere quia atque quibusdam, nihil vel, reprehenderit non perferendis quasi fugit magni dolorem fugiat officiis id doloribus sit.
+                                {{ whoweare()->description_two }}
                             </p>
                         </div>
                         <button class="btn">
-                            contact us
+                            <a href="{{ route('frontend.whoweare') }}" class="text-white">Read more</a>
                         </button>
                     </div>
                 </div>
             </div>
             <div class="why_choose wow fadeInUp animated animated animated">
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp animated animated animated" data-wow-delay=".2s">
-                        <div class="item mt-45">
-                            <div class="icon">
-                                <i class="fas fa-hand-rock"></i>
-                            </div>
-                            <h4>Supporting Good Cause</h4>
-                            <p>Your contrbution used locally to help charitable causes and support the organization, Support only for good causes.</p>
+                    @php
+                        $i = 1;
+                    @endphp
+                  @forelse (whowearebottom()->take(3) as $item)
+                  <div class="col-lg-4 col-sm-6 wow fadeInUp animated animated animated" data-wow-delay="
+                    @if($i == 1)
+                    .2s
+                    @elseif($i == 2)
+                    .5s
+                    @elseif($i == 3)
+                    .6s
+                    @endif
+                  ">
+                    <div class="item mt-45">
+                        <div class="icon">
+                           <img src="{{ asset('uploads/whowearebottom') }}/{{ $item->image }}" alt="notfound">
                         </div>
+                        <h4>{{ $item->title }}</h4>
+                        <p>{{ $item->description }}</p>
                     </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp animated animated animated" data-wow-delay=".5s">
-                        <div class="item mt-45">
-                            <div class="icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4>Most Trusted One</h4>
-                            <p>Your contrbution used locally to help charitable causes and support the organization, Support only for good causes.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp animated animated animated" data-wow-delay=".6s">
-                        <div class="item mt-45">
-                            <div class="icon">
-                                <i class="fas fa-user-friends"></i>
-                            </div>
-                            <h4>Supporting Good Cause</h4>
-                            <p>Your contrbution used locally to help charitable causes and support the organization, Support only for good causes.</p>
-                        </div>
-                    </div>
+                </div>
+                    @php
+                        $i++;
+                    @endphp
+                  @empty
+                      <p>No data available</p>
+                  @endforelse
                 </div>
             </div>
         </div>
@@ -113,41 +113,35 @@
             </div>
             <div class="services">
                 <div class="row justify-content-center">
-                    <div class="col-md-6 col-sm-6 col-12 col-lg-3 wow fadeInUp animated animated animated">
-                        <div class="services_item mt-50 text-center">
+            
+                    @php
+                        $j = 1;
+                    @endphp
+                    @forelse (whatwedo() as $item)
+                    <div class="col-md-6 col-sm-6 col-12 col-lg-3 wow fadeInUp animated animated animated" 
+                    @if($j == 2)
+                    data-wow-delay=".4s"
+                    @elseif($j == 3)
+                    data-wow-delay=".6s"
+                    @elseif($j == 4)
+                    data-wow-delay=".7s"
+                    @endif
+                    >
+                        <div class="services_item {{ ($j == 2) ? 'active' : '' }} mt-50 text-center">
                             <div class="icon">
-                                <i class="fas fa-recycle"></i>
+                                <i class="{{ $item->icon }}"></i>
                             </div>
-                            <h4>Recycling</h4>
-                            <p>Praising pain was born &amp; I will give you a complete ac of the all systems, expound the actual great.</p>
+                            <h4>{{ $item->title }}</h4>
+                            <p>{{ $item->description }}</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-12 col-lg-3 wow fadeInUp animated animated animated" data-wow-delay=".4s">
-                        <div class="services_item active mt-50 text-center">
-                            <div class="icon">
-                                <i class="fas fa-solar-panel"></i>
-                            </div>
-                            <h4>Eco System</h4>
-                            <p>Praising pain was born &amp; I will give you a complete ac of the all systems, expound the actual great.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-12 col-lg-3 wow fadeInUp animated animated animated" data-wow-delay=".5s">
-                        <div class="services_item mt-50 text-center">
-                            <div class="icon">
-                                <i class="fas fa-globe-americas"></i>
-                            </div>
-                            <h4>save earth</h4>
-                            <p>Praising pain was born &amp; I will give you a complete ac of the all systems, expound the actual great.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-12 col-lg-3 wow fadeInUp animated animated animated" data-wow-delay=".6s">
-                        <div class="services_item mt-50 text-center">
-                            <div class="icon">
-                                <i class="fas fa-frog"></i>
-                            </div>
-                            <h4>save animals</h4>
-                            <p>Praising pain was born &amp; I will give you a complete ac of the all systems, expound the actual great.</p>
-                        </div>
+                    @php
+                        $j++;
+                    @endphp
+                    @empty
+                        <p>No data available</p>
+                    @endforelse
+                    
                     </div>
                 </div>
             </div>
@@ -159,34 +153,31 @@
                 </div>
                 <div class="counter">
                     <div class="row justify-content-center">
-                        <div class="col-sm-6 col-lg-3 wow fadeInUp animated animated animated">
+                       @php
+                           $k = 1;
+                       @endphp
+                        @forelse (interesting()->take(4) as $item)
+                        <div class="col-sm-6 col-lg-3 wow fadeInUp animated animated animated" 
+                            @if($k == 2)
+                            data-wow-delay=".4s"
+                            @elseif($k == 3)
+                            data-wow-delay=".5s"
+                            @elseif($k == 4)
+                            data-wow-delay=".6s"
+                            @endif
+                        >
                             <div class="counter_text text-center mt-50">
-                                <i class="fas fa-heartbeat"></i>
-                                <h2 class="count">26</h2><span>+</span>
-                                <h4>Year Of Experience</h4>
+                                <i class="{{ $item->icon }}"></i>
+                                <h2 class="count">{{ intVal($item->title) }}</h2><span>+</span>
+                                <h4>{{ $item->description }}</h4>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3 wow fadeInUp animated animated animated" data-wow-delay=".4s">
-                            <div class="counter_text text-center mt-50">
-                                <i class="fas fa-heartbeat"></i>
-                                <h2 class="count">48</h2><span></span>
-                                <h4>Year Of Experience</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 wow fadeInUp animated animated animated" data-wow-delay=".5s">
-                            <div class="counter_text text-center mt-50">
-                                <i class="fas fa-user-nurse"></i>
-                                <h2 class="count">103</h2>
-                                <h4>Volunteers Involved</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 wow fadeInUp animated animated animated" data-wow-delay=".6s">
-                            <div class="counter_text text-center mt-50">
-                                <i class="fas fa-frog"></i>
-                                <h2 class="count">360</h2><span>%</span>
-                                <h4>Animals Saved</h4>
-                            </div>
-                        </div>
+                        @php
+                            $k++;
+                        @endphp
+                        @empty
+                            <p>No data available</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -202,25 +193,25 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-1 order-lg-0">
                     <div class="work_img mt-45 wow fadeInLeft animated animated animated" data-wow-delay=".2s">
-                        <img src="images/work/world-map-made-with-grass.png" class="img-fluid w-100" alt="notfound">
+                        <img src="{{ asset('uploads/howdoesitwork') }}/{{ howdoesitwork()->image }}" class="img-fluid w-100" alt="notfound">
                     </div>
                 </div>
                 <div class="col-lg-6 order-0 order-lg-1">
                     <div class="work_text mt-45 wow fadeInRight animated animated animated" data-wow-delay=".6s">
                         <div class="section_title">
-                            <h2>how does it work</h2>
+                            <h2>{{ howdoesitwork()->header }}</h2>
                         </div>
                         <p>
-                            Mauris id enim id purus ornare tincidunt. Aenean vel consequat risus. Proin viverra nisi at nisl imperdiet auctor. Donec ornare, est sed tincidunt placerat, sem mi suscipit mi.
+                            {{ howdoesitwork()->description_one }}
                         </p>
                         <ul class="mt-20">
-                            <li><i class="fas fa-plus"></i>Help protect the environment and sustain its natural resources</li>
-                            <li><i class="fas fa-plus"></i>Ecologically responsible decisions and lifestyles</li>
-                            <li><i class="fas fa-plus"></i>Help protect the environment and sustain its natural resources</li>
-                            <li><i class="fas fa-plus"></i>Ecologically responsible decisions and lifestyles</li>
+                            <li><i class="fas fa-plus"></i>{{ howdoesitwork()->bullet_one }}</li>
+                            <li><i class="fas fa-plus"></i>{{ howdoesitwork()->bullet_two }}</li>
+                            <li><i class="fas fa-plus"></i>{{ howdoesitwork()->bullet_three }}</li>
+                            <li><i class="fas fa-plus"></i>{{ howdoesitwork()->bullet_four }}</li>
                         </ul>
                         <button class="btn">
-                            learn more
+                            <a href="{{ route('frontend.howdoesitwork') }}" class="text-white">Learn more</a>
                         </button>
                     </div>
                 </div>
@@ -235,32 +226,33 @@
     <section id="video_section">
         <div class="container">
             <div class="section_title text-center">
-                <h2>Video Presentation</h2>
+                <h2>{{ video()->header }}</h2>
             </div>
             <div class="row align-items-center">
                 <div class="col-md-12 col-lg-6 wow fadeInLeft animated animated animated" data-wow-delay=".2s">
                     <div class="video mt-40">
-                        <iframe src="https://player.vimeo.com/video/9519939" width="100%" height="310" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen autoplay></iframe>
+                        <iframe src="{{ video()->video }}" width="100%" height="310" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen autoplay></iframe>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6 wow fadeInRight animated animated animated" data-wow-delay=".6s">
                     <div class="video_text mt-40">
-                        <h3>Proper demonstration of how our vending machine works!</h3>
-                        <p>Load the vending machine. Prior to operation, a vending machine must be stocked with the products it will dispense to consumers.. </p>
+                        <h3>{{ video()->title }}</h3>
+                        <p>{{ video()->description_one }}</p>
                         <p>
-                            Expound the actual teachings of the great explorer of the truth, the master-builder of human happiness, but because those who that are extremely painful.</p>
+                            {{ video()->description_two }}
+                        </p>
                         <ul>
                             <li>
-                                <i class="fas fa-check-double"></i> Sponsor meals for 50 children for 1 full year.
+                                <i class="fas fa-check-double"></i>{{ video()->bullet_one }}
                             </li>
                             <li>
-                                <i class="fas fa-check-double"></i>Sponsor mid-day meals for one month.
+                                <i class="fas fa-check-double"></i>{{ video()->bullet_two }}
                             </li>
                             <li>
-                                <i class="fas fa-check-double"></i>You can donate clothes, blankets and ect...
+                                <i class="fas fa-check-double"></i>{{ video()->bullet_three }}
                             </li>
                             <li>
-                                <i class="fas fa-check-double"></i>You can donate food material like rice, veggies.
+                                <i class="fas fa-check-double"></i>{{ video()->bullet_four }}
                             </li>
                         </ul>
                     </div>
@@ -277,33 +269,33 @@
     <section id="help_section">
         <div class="container p-md-0">
             <div class="section_title">
-                <h2>what can you do to help</h2>
+            <h2>{{ whatcanyoudo()->header }}</h2>
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="work_text help_text mt-45 wow fadeInLeft animated animated animated" data-wow-delay=".2s">
                         <h3>
-                            Donec ornare, est sed tincidunt placerat.
+                            {{ whatcanyoudo()->title }}
                         </h3>
                         <p>
-                            Mauris id enim id purus ornare tincidunt. Aenean vel consequat risus. Proin viverra nisi at nisl imperdiet auctor. Donec ornare, viverra nisi at nisl imperdiet auctor sem mi suscipit mi.
+                            {{ whatcanyoudo()->description_one }}
                         </p>
                         <p>
-                            Mauris id enim id purus ornare tincidunt. Aenean vel consequat risus. Proin viverra nisi at nisl imperdiet auctor. Donec ornare, viverra nisi at nisl imperdiet auctor sem mi suscipit mi.
+                            {{ whatcanyoudo()->description_two }}
                         </p>
                         <ul class="mt-15">
-                            <li><i class="fas fa-check-double"></i>Help protect the environment and sustain its natural resources</li>
-                            <li><i class="fas fa-check-double"></i>Ecologically responsible decisions and lifestyles</li>
-                            <li><i class="fas fa-check-double"></i>Help protect the environment and sustain its natural resources</li>
+                            <li><i class="fas fa-check-double"></i>{{ whatcanyoudo()->bullet_one }}</li>
+                            <li><i class="fas fa-check-double"></i>{{ whatcanyoudo()->bullet_two }}</li>
+                            <li><i class="fas fa-check-double"></i>{{ whatcanyoudo()->bullet_three }}</li>
                         </ul>
                         <button class="btn">
-                            learn more
+                            <a href="{{ route('frontend.whatcanyoudo') }}" class="text-white">learn more</a>
                         </button>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="help_img mt-45 wow fadeInRight animated animated animated" data-wow-delay=".6s">
-                        <img src="images/work/close-up-picture-hand-watering-sapling-plant.png" class="img-fluid w-100" alt="not-found">
+                        <img src="{{ asset('uploads/whatcanyoudo') }}/{{ whatcanyoudo()->image }}" class="img-fluid w-100" alt="not-found">
                     </div>
                 </div>
             </div>
@@ -318,45 +310,45 @@
         <div class="container p-md-0">
             <div class="section_title text-center">
                 <h2>request a quote</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, amet architecto.</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-10 wow fadeInRight animated animated animated" data-wow-delay=".6s">
                     <div class="quote_form mt-45">
-                        <form action="">
+                        <form action="{{ route('frontend.contactstore') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <label for="">full name <span>*</span></label>
                                     <div class="full_name">
-                                        <input type="text" placeholder="" class="form-control">
+                                        <input name="name" required type="text" placeholder="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <label for="">email address <span>*</span></label>
                                     <div class="email">
-                                        <input type="email" placeholder="" class="form-control">
+                                        <input required name="email" type="email" placeholder="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <label for="">phone number</label>
                                     <div class="phone_number">
-                                        <input type="text" placeholder="" class="form-control">
+                                        <input required name="phone" type="text" placeholder="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <label for="">company name</label>
                                     <div class="company">
-                                        <input type="text" placeholder="" class="form-control">
+                                        <input required name="company" type="text" placeholder="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-lg-12">
                                     <label for="">describe in a few sentence <span>:</span></label>
                                     <div class="textarea">
-                                        <textarea name="" placeholder="" id="" cols="30" rows="10"></textarea>
+                                        <textarea required name="message" placeholder="" id="" cols="30" rows="10"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn">send</button>
+                            <button class="btn" type="submit">send</button>
                         </form>
                     </div>
                 </div>
@@ -375,102 +367,34 @@
                 <h2>latest news</h2>
             </div>
             <div class="row">
+                @forelse (blogs() as $item)
                 <article class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
                     <div class="default-blog-news wow fadeInUp animated animated" data-wow-delay=".2s" style="visibility: visible; animation-name: fadeInUp;">
                         <figure class="img-holder">
-                            <a href="blog.html"><img src="images/project/1.jpg" class="img-fluid w-100" alt="News"></a>
+                            <a href="{{ route('frontend.blogDetails', $item->id) }}"><img src="{{ asset('uploads/blogs') }}/{{ $item->image }}" class="img-fluid w-100" alt="News" style="height: 165px !important"></a>
                             <figcaption class="overlay">
                                 <div class="box">
                                     <div class="content">
-                                        <a href="blog.html"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                        <a href="{{ route('frontend.blogDetails', $item->id) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </figcaption>
                         </figure>
                         <div class="lower-content">
-                            <div class="date">March 02, 2017</div>
-                            <div class="post-meta">by fletcher | 14 Comments</div>
-                            <a href="blog.html">
-                                <h4>Steps for Save Animals</h4>
+                            <div class="date">{{ $item->created_at->format('M d, y') }}</div>
+                            <div class="post-meta">by {{ $item->written_by }}</div>
+                            <a href="{{ route('frontend.blogDetails', $item->id) }}">
+                                <h4>{{ $item->title }}</h4>
                             </a>
                             <div class="text">
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis sed praesentium voluptatum...</p>
+                                <p>{{ $item->sub_title }}</p>
                             </div>
                         </div>
                     </div>
                 </article>
-                <article class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="default-blog-news wow fadeInUp animated animated" data-wow-delay=".4s" style="visibility: visible; animation-name: fadeInUp;">
-                        <figure class="img-holder">
-                            <a href="blog.html"><img src="images/project/2.jpg" class="img-fluid w-100" alt="News"></a>
-                            <figcaption class="overlay">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="blog.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </figcaption>
-                        </figure>
-                        <div class="lower-content">
-                            <div class="date">January 14, 2017</div>
-                            <div class="post-meta">by stephen | 22 Comments</div>
-                            <a href="blog.html">
-                                <h4>The Ozone Layer</h4>
-                            </a>
-                            <div class="text">
-                                <p>How all this mistaken idea denouncing pleasure & praising pain was born and will give you a complete...</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="default-blog-news wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-name: fadeInUp;">
-                        <figure class="img-holder">
-                            <a href="blog.html"><img src="images/project/10.jpg" class="img-fluid w-100" alt="News"></a>
-                            <figcaption class="overlay">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href="blog.html"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </figcaption>
-                        </figure>
-                        <div class="lower-content">
-                            <div class="date">August 21, 2016</div>
-                            <div class="post-meta">by Vincent | 03 Comments</div>
-                            <a href="blog.html">
-                                <h4>Dispose Plastic Products</h4>
-                            </a>
-                            <div class="text">
-                                <p>The great explorer of the truth master builder of human happinessone rejects, dislikes, or avoids pleasure...</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
-                    <div class="default-blog-news wow fadeInUp animated animated" data-wow-delay=".6s" style="visibility: visible; animation-name: fadeInUp;">
-                        <figure class="img-holder">
-                            <a href="blog.html"><img src="images/project/12.jpg" class="img-fluid w-100" alt="News"></a>
-                            <figcaption class="overlay">
-                                <div class="box">
-                                    <div class="content">
-                                        <a href=""><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </figcaption>
-                        </figure>
-                        <div class="lower-content">
-                            <div class="date">July 15, 2016</div>
-                            <div class="post-meta">by fletcher | 14 Comments</div>
-                            <a href="blog.html">
-                                <h4>Ideas for Save Energy</h4>
-                            </a>
-                            <div class="text">
-                                <p>Know how to pursue pleasure rationally encounter consequences that extremely painful rationally encounter... </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                @empty
+                    <p>No data available</p>
+                @endforelse
             </div>
         </div>
     </section>
@@ -485,42 +409,19 @@
                 <h2>Our Partners</h2>
             </div>
             <div class="row clients_slider">
+                @forelse (partners() as $item)
                 <div class="col-md-3">
                     <div class="clients_item">
-                        <img src="images/clients/1.jpg" class="img-fluid" alt="not-found">
+                        <img src="{{ asset('uploads/partners') }}/{{ $item->image }}" class="img-fluid" alt="not-found">
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="clients_item">
-                        <img src="images/clients/2.jpg" class="img-fluid" alt="not-found">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="clients_item">
-                        <img src="images/clients/3.jpg" class="img-fluid" alt="not-found">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="clients_item">
-                        <img src="images/clients/4.jpg" class="img-fluid" alt="not-found">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="clients_item">
-                        <img src="images/clients/4.jpg" class="img-fluid" alt="not-found">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="clients_item">
-                        <img src="images/clients/4.jpg" class="img-fluid" alt="not-found">
-                    </div>
-                </div>
+                @empty
+                    <p>No partners yet.</p>
+                @endforelse
+               
             </div>
         </div>
     </section>
 
     <!--=================Clients Section End======================-->
-
-
-
 @endsection

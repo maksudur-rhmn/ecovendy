@@ -41,20 +41,21 @@
                     <div class="col-lg-8 col-md-7 col-sm-12">
                         <div class="header_info d-flex">
                             <div class="phone mr-30">
-                                <a href="#"><i class="fas fa-mobile-alt"></i>+123-5687-123</a>
+                                <a href="tel:{{ footer()->phone }}">
+                                    <i class="fas fa-mobile-alt"></i>+{{ footer()->phone }}</a>
                             </div>
                             <div class="email mr-30">
-                                <a href="#"><i class="far fa-envelope"></i>demo@email.com</a>
+                                <a href="mailto:{{ footer()->email }}"><i class="far fa-envelope"></i>{{ footer()->email }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-5 col-sm-12">
                         <div class="social_icon text-right">
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="{{ footer()->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ footer()->twitter }}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ footer()->instagram }}"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{ footer()->youtube }}"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -65,7 +66,7 @@
             <nav class="navbar navbar-expand-lg py-0">
                 <div class="container p-0">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('frontend_assets/images/logo/logo2.png') }}" alt="not found">
+                        <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="not found">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-bars"></i>
@@ -76,19 +77,19 @@
                                 <a class="nav-link @yield('home-active')" href="{{ url('/') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#about_section">who we are</a>
+                                <a class="nav-link @yield('whoweare-active')" href="@yield('url-whoweare')#about_section">who we are</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#services_section">what we do</a>
+                                <a class="nav-link" href="@yield('url-whatwedo')#services_section">what we do</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#blog_section">blog</a>
+                                <a class="nav-link" href="@yield('url-whatwedo')#blog_section">blog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @yield('faq-active')" href="faq.html">faq</a>
+                                <a class="nav-link @yield('faq-active')" href="{{ route('frontend.faqs') }}">faq</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @yield('contact-active')" href="contact.html">contact</a>
+                                <a class="nav-link @yield('contact-active')" href="{{ route('frontend.contact') }}">contact</a>
                             </li>
                         </ul>
                     </div>
@@ -98,7 +99,11 @@
     </header>
 
     <!--=========================Header Section End=====================-->
-
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     @yield('content')
 
         <!--=================Footer Section Start=====================-->
@@ -108,11 +113,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="footer_logo text-center">
-                            <img src="images/logo/logo.png" alt="not-found">
+                            <img src="{{ asset('uploads/generalsettings') }}/{{ footer()->image }}" alt="not-found">
                         </div>
                         <div class="footer_icon pt-30">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ footer()->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ footer()->twitter }}"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
